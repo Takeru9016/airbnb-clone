@@ -17,11 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Navbar />
-        {/* <ClientOnly>
+        <ClientOnly>
           <Modal isOpen />
           <Navbar />
-        </ClientOnly> */}
+        </ClientOnly>
         {children}
       </body>
     </html>
