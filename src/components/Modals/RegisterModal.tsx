@@ -12,6 +12,7 @@ import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../Inputs/Input";
 import Button from "../Button";
+import { signIn } from "next-auth/react";
 
 export default function RegisterModal() {
   const registerModal = useRegisterModal();
@@ -83,18 +84,21 @@ export default function RegisterModal() {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center items-center flex flex-row gap-2">
           <div>Already have an account?</div>
-          <div className="text-neutral-800 cursor-pointer hover:underline" onClick={registerModal.onClose}>
+          <div
+            className="text-neutral-800 cursor-pointer hover:underline"
+            onClick={registerModal.onClose}
+          >
             Log in
           </div>
         </div>
