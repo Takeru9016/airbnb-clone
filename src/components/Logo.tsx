@@ -9,6 +9,7 @@ export default function Logo() {
 
   return (
     <Image
+      onClick={() => router.push("/")}
       className="hidden md:block cursor-pointer"
       src={image.logo}
       alt="logo"
