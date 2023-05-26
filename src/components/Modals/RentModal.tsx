@@ -12,6 +12,7 @@ import Modal from "./Modal";
 import CategoryInput from "../CategoryInput";
 import { categories } from "../Categories";
 import Heading from "../Heading";
+import CountrySelect from "../CountrySelect";
 
 enum STEPS {
   CATEGORY = 0,
@@ -48,6 +49,15 @@ export default function RentModal() {
   });
 
   const category = watch("category");
+  const location = watch("location");
+
+  const Map = useMemo(
+    () =>
+      dynamic(() => import("../Map"), {
+        ssr: false,
+      }),
+    [location]
+  );
 
   const setCurrentValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -102,11 +112,27 @@ export default function RentModal() {
     </div>
   );
 
+  if (step === STEPS.LOCATION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Where is yuor place located?"
+          subtitle="Help guests find you!"
+        />
+        <CountrySelect
+          value={location}
+          onChange={(value) => setCurrentValue("location", value)}
+        />
+        <Map center={location?.latlng} />
+      </div>
+    );
+  }
+
   return (
     <Modal
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={rentModal.onClose}
+      onSubmit={onNext}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
