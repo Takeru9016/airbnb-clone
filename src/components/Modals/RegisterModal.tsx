@@ -7,15 +7,16 @@ import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 
-import { useRegisterModal } from "@/hooks";
+import { useLoginModal, useRegisterModal } from "@/hooks";
 import Modal from "./Modal";
 import Heading from "../Heading";
-import Input from "../Inputs/Input";
+import Input from "../Input";
 import Button from "../Button";
 import { signIn } from "next-auth/react";
 
 export default function RegisterModal() {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -45,6 +46,11 @@ export default function RegisterModal() {
         setIsLoading(false);
       });
   };
+
+  const toggle = useCallback(() => {
+    loginModal.onOpen();
+    registerModal.onClose();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -97,7 +103,7 @@ export default function RegisterModal() {
           <div>Already have an account?</div>
           <div
             className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={registerModal.onClose}
+            onClick={toggle}
           >
             Log in
           </div>
