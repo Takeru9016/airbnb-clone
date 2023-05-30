@@ -1,4 +1,4 @@
-import { getCurrentUser, getListingById } from "@/actions";
+import { getCurrentUser, getListingById, getReservations } from "@/actions";
 import { ClientOnly, EmptyState } from "@/components";
 import ListingClient from "./ListingClient";
 
@@ -8,6 +8,7 @@ interface IParams {
 
 export default async function ListingPage({ params }: { params: IParams }) {
   const listing = await getListingById(params);
+  const reservations = await getReservations(params);
   const currentUser = await getCurrentUser();
 
   if (!listing) {
@@ -20,7 +21,11 @@ export default async function ListingPage({ params }: { params: IParams }) {
 
   return (
     <ClientOnly>
-      <ListingClient listing={listing} currentUser={currentUser} />
+      <ListingClient
+        listing={listing}
+        reservations={reservations}
+        currentUser={currentUser}
+      />
     </ClientOnly>
   );
 }
