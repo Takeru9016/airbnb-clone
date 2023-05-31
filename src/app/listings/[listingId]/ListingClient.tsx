@@ -76,7 +76,7 @@ export default function ListingClient({
       })
       .then(() => {
         toast.success("Reservation created successfully!");
-        router.refresh();
+        router.push("/trips");
       })
       .catch(() => {
         toast.error("Something went wrong!");
