@@ -1,4 +1,4 @@
-" use client";
+"use client";
 
 import { EmptyState } from "@/components";
 import { useEffect } from "react";
