@@ -2,7 +2,7 @@ import FavoritesClient from "./FavoritesClient";
 import { getCurrentUser, getFavoriteListings } from "@/actions";
 import { ClientOnly, EmptyState } from "@/components";
 
-export default async function page() {
+export default async function FavoritePage() {
   const currentUser = await getCurrentUser();
   const listings = await getFavoriteListings();
 
