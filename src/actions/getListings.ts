@@ -15,12 +15,12 @@ export default async function getListings(params: IListingsParams) {
     try {
         const {
             userId,
-            roomCount,
             guestCount,
+            roomCount,
             bathroomCount,
-            locationValue,
             startDate,
             endDate,
+            locationValue,
             category,
         } = params;
 
