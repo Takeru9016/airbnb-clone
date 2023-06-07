@@ -30,3 +30,7 @@ export { default as ListingReservation } from "./ListingReservation";
 export { default as Calendar } from "./Calendar";
 export { default as SearchModal } from "./Modals/SearchModal";
 export { default as Loader } from "./Loader";
+export { default as FavoritesClient } from "./FavoritesClient";
+export { default as PropertiesClient } from "./PropertiesClient";
+export { default as ReservationClient } from "./ReservationClient";
+export { default as TripsClient } from "./TripsClient";

@@ -1,6 +1,5 @@
-import { EmptyState, ClientOnly } from "@/components";
+import { EmptyState, ClientOnly, PropertiesClient } from "@/components";
 import { getCurrentUser, getListings } from "@/actions";
-import PropertiesClient from "./PropertiesClient";
 
 export default async function PropertiesPage() {
   const currentUser = await getCurrentUser();
