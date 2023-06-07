@@ -47,14 +47,15 @@ export default function TripsClient({
         subtitle="Where you've been and where you're going"
       />
       <div className="grid grid-cols-1 mt-10 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-        {reservations.map((reservation) => (
+        {reservations.map((reservation: any) => (
           <ListingCard
             key={reservation.id}
             data={reservation.listing}
             reservation={reservation}
             actionId={reservation.id}
+            onAction={onCancel}
             disabled={deletingId === reservation.id}
-            actionLabel="Cancel Reservation"
+            actionLabel="Cancel reservation"
             currentUser={currentUser}
           />
         ))}

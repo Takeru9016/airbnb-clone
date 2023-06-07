@@ -20,14 +20,14 @@ export default function PropertiesClient({
   const router = useRouter();
   const [deletingId, setDeletingId] = useState("");
 
-  const onCancel = useCallback(
+  const onDelete = useCallback(
     (id: string) => {
       setDeletingId(id);
 
       axios
         .delete(`/api/listings/${id}`)
         .then(() => {
-          toast.success("Listings Deleted successfully");
+          toast.success("Listing deleted");
           router.refresh();
         })
         .catch((error) => {
@@ -44,13 +44,14 @@ export default function PropertiesClient({
     <Container>
       <Heading title="Properties" subtitle="Manage your properties here." />
       <div className="grid grid-cols-1 mt-10 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-        {listings.map((listing) => (
+        {listings.map((listing: any) => (
           <ListingCard
             key={listing.id}
             data={listing}
             actionId={listing.id}
+            onAction={onDelete}
             disabled={deletingId === listing.id}
-            actionLabel="Delete your Property"
+            actionLabel="Delete property"
             currentUser={currentUser}
           />
         ))}

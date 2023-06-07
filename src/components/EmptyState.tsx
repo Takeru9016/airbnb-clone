@@ -1,8 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Heading from "./Heading";
+
 import Button from "./Button";
+import Heading from "./Heading";
 
 interface EmptyStateProps {
   title?: string;
@@ -10,11 +11,11 @@ interface EmptyStateProps {
   showReset?: boolean;
 }
 
-export default function EmptyState({
-  title = "No exact matches found",
-  subtitle = "Try adjusting or changing some of your filers.",
+const EmptyState: React.FC<EmptyStateProps> = ({
+  title = "No exact matches",
+  subtitle = "Try changing or removing some of your filters.",
   showReset,
-}: EmptyStateProps) {
+}) => {
   const router = useRouter();
 
   return (
@@ -31,4 +32,6 @@ export default function EmptyState({
       </div>
     </div>
   );
-}
+};
+
+export default EmptyState;

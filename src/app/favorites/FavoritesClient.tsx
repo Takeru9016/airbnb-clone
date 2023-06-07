@@ -17,10 +17,10 @@ export default function FavoritesClient({
         subtitle="List of places you have favorited!"
       />
       <div className="mt-10 gap-8 grid grid-cols-1 sm:grid-rows-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-        {listings.map((listing) => (
+        {listings.map((listing: any) => (
           <ListingCard
-            key={listing.id}
             currentUser={currentUser}
+            key={listing.id}
             data={listing}
           />
         ))}
