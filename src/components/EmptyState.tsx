@@ -11,11 +11,11 @@ interface EmptyStateProps {
   showReset?: boolean;
 }
 
-const EmptyState: React.FC<EmptyStateProps> = ({
-  title = "No exact matches",
-  subtitle = "Try changing or removing some of your filters.",
+export default function EmptyState({
+  title = "No exact matches found",
+  subtitle = "Try adjusting or changing some of your filters.",
   showReset,
-}) => {
+}: EmptyStateProps) {
   const router = useRouter();
 
   return (
@@ -32,6 +32,4 @@ const EmptyState: React.FC<EmptyStateProps> = ({
       </div>
     </div>
   );
-};
-
-export default EmptyState;
+}

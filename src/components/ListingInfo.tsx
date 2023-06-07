@@ -8,7 +8,7 @@ import { useCountries } from "@/hooks";
 import Avatar from "./Avatar";
 import ListingCategory from "./ListingCategory";
 
-const Map = dynamic(() => import("./Map"), { ssr: false });
+const Map = dynamic(() => import('@/components/Map'), { ssr: false });
 
 interface ListingInfoProps {
   user: SafeUser;
