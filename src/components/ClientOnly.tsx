@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 interface ClientOnlyProps {
   children: React.ReactNode;
@@ -9,11 +9,14 @@ interface ClientOnlyProps {
 export default function ClientOnly({ children }: ClientOnlyProps) {
   const [hasMounted, setHasMounted] = useState(false);
 
-  useEffect(() => {
+  const checkClientRender = () => {
     setHasMounted(true);
-  }, []);
+  };
 
-  if (typeof window === "undefined" || !hasMounted) {
+  if (typeof window === "undefined") {
+    return null;
+  } else if (!hasMounted) {
+    checkClientRender();
     return null;
   }
 
